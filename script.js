@@ -19,3 +19,35 @@ Generiamo gli input da JS, invece di scriverli nel codice
 5. All'inserimento dei numeri, stabilire quali e quanti sono i numeri corretti inseriti dall'utente.
 6. Validazione. (Bonus2)
 */
+
+
+
+//Funzioni utili
+//Funzione che genera i numeri
+let generateNumber = (min, max) => Math.floor(Math.random() * (max - min - 1) + min);
+
+//Recupero gli elementi dal dom
+const numberDisplay = document.getElementById('numbers');
+const takeGuess = document.getElementById('guessS')
+
+//Opzioni di preparazione
+let min = 1;
+let max = 20;
+let listNumbers = []; //Array dei numeri
+
+
+
+
+// Ciclo iterativo che genera 5 numeri casuali unici
+while (listNumbers.length < 5) {
+    const randomNumber = generateNumber(min, max);
+    // Verifica se il numero è già presente nell'array
+    if (!listNumbers.includes(randomNumber)) {
+        listNumbers.push(randomNumber);
+
+        console.log(listNumbers)
+    }
+}
+// Aggiungo i numeri unici alla pagina
+
+numberDisplay.innerHTML = listNumbers

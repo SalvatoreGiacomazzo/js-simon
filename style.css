@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#numbers {
+    height: 40vh;
+    max-width: 30vw;
+    margin: 150px 500px;
+    font-size: 8rem;
+    font-family: sans-serif;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    gap: 15px;
+    flex-wrap: nowrap;
+}
