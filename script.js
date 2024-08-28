@@ -29,14 +29,17 @@ let generateNumber = (min, max) => Math.floor(Math.random() * (max - min - 1) + 
 
 //Recupero gli elementi dal dom
 const numberDisplay = document.getElementById('numbers');
-const takeGuess = document.getElementById('guessS')
+const inputDisplay = document.getElementById('input-display')
+const submitAnswer = document.getElementById('submit-answer')
+const countDown = document.getElementById('countdown')
+const form = document.getElementById('form')
 
 //Opzioni di preparazione
 let min = 1;
-let max = 20;
+let max = 100;
 let listNumbers = []; //Array dei numeri
-let time = 30000;
-
+let time = 10;
+countDown.innerText = time
 
 // Ciclo iterativo che genera 5 numeri casuali unici
 while (listNumbers.length < 5) {
@@ -44,13 +47,28 @@ while (listNumbers.length < 5) {
     // Verifica se il numero è già presente nell'array
     if (!listNumbers.includes(randomNumber)) {
         listNumbers.push(randomNumber);
+
+
+        console.log(listNumbers)
+
     }
 }
 // Aggiungo i numeri unici alla pagina
 
 numberDisplay.innerHTML = listNumbers
 
+//Funzione che regola il countdown
+const countDownTime = setInterval(() => {
+    countDown.innerText = time;
+    if (time <= 0) {
+        clearInterval(countDownTime); // Ferma l'intervallo se si arriva a 0
+        form.classList.remove('invisible')  //Rimozione della classe invisible al form e quindi apparizione del form
+        numberDisplay.classList.add('invisible') //Tolgo la visibilità ai numeri alla fine del countdown
 
-setTimeout(() => {
-    numberDisplay.innerHTML = ''; // Pulisce il contenuto dell'elemento
-}, time); 
+    } else {
+        time--;
+    }
+}, 1000);
+
+
+//Creazione degli input e del pulsante di submit

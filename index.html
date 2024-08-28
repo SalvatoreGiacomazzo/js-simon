@@ -10,12 +10,24 @@
 </head>
 
 <body>
+    <!--Countdown-->
+    <div id="countdown"></div>
+
     <!--Qui vanno i 5 numeri-->
     <ul id="numbers">
 
     </ul>
     <!--Qui vanno gli input-->
-    <div id="guess"></div>
+    <form id="form" class="invisible">
+        <div>
+            <input type="number" min="1" max="100" required>
+            <input type="number" min="1" max="100" required>
+            <input type="number" min="1" max="100" required>
+            <input type="number" min="1" max="100" required>
+            <input type="number" min="1" max="100" required>
+            <button id="submit-answer" type="input">TAKE YOUR GUESS</button>
+        </div>
+    </form>
     <!--script-->
     <script src="./script.js"></script>
 </body>
