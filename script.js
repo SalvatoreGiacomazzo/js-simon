@@ -33,6 +33,7 @@ const inputDisplay = document.getElementById('input-display')
 const submitAnswer = document.getElementById('submit-answer')
 const countDown = document.getElementById('countdown')
 const form = document.getElementById('form')
+const inputAnswers = document.querySelectorAll('input')
 
 //Opzioni di preparazione
 let min = 1;
@@ -47,12 +48,9 @@ while (listNumbers.length < 5) {
     // Verifica se il numero è già presente nell'array
     if (!listNumbers.includes(randomNumber)) {
         listNumbers.push(randomNumber);
-
-
-        console.log(listNumbers)
-
     }
 }
+console.log(listNumbers)
 // Aggiungo i numeri unici alla pagina
 
 numberDisplay.innerHTML = listNumbers
@@ -71,4 +69,16 @@ const countDownTime = setInterval(() => {
 }, 1000);
 
 
-//Creazione degli input e del pulsante di submit
+//Raccolta informazioni del form
+form.addEventListener('submit', event => {
+    event.preventDefault(); //blocco l'invio del form
+
+    const numberGuesses = [];  //Array in cui si andranno a depositare i numeri inseriti negli input dall'utente
+
+    for (let i = 0; i < inputAnswers.length; i++) {
+        const singleInput = inputAnswers[i];
+        const value = parseInt(singleInput.value); // trasformo l'array degli input da array di stringhe a numeri
+        numberGuesses.push(value); // aggiungo il numero convertito all'array
+    }
+    console.log(numberGuesses);
+})
