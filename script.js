@@ -34,7 +34,7 @@ const submitAnswer = document.getElementById('submit-answer')
 const countDown = document.getElementById('countdown')
 const form = document.getElementById('form')
 const inputAnswers = document.querySelectorAll('input')
-
+const displayResult = document.getElementById('result')
 //Opzioni di preparazione
 let min = 1;
 let max = 100;
@@ -81,4 +81,23 @@ form.addEventListener('submit', event => {
         numberGuesses.push(value); // aggiungo il numero convertito all'array
     }
     console.log(numberGuesses);
+
+
+    //Controllo delle risposte dell'utente
+    const rightAnswers = [];
+    for (let i = 0; i < numberGuesses.length; i++) {
+        if (listNumbers.includes(numberGuesses[i])) {
+            rightAnswers.push(numberGuesses[i]); // Aggiungo il numero corretto all'array delle risposte corrette
+
+        }
+    }
+
+    // Mostra il risultato
+    displayResult.classList.remove('invisible'); //rimuovo la classe invisibile al div che stampa il risultato in pagina
+    if (rightAnswers.length > 0) {
+        displayResult.innerText = `Hai indovinato ${rightAnswers.length} numeri: ${rightAnswers}`;  //stampa in pagina 
+    } else {
+        displayResult.innerText = 'Nessun numero è stato indovinato.';
+    }
+
 })

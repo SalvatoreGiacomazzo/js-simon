@@ -48,6 +48,12 @@ form {
     margin: 0 auto;
 }
 
+#result {
+    font-family: sans-serif;
+    font-size: 2rem;
+    width: 400px;
+    margin: 10px auto;
+}
 
 .invisible {
     visibility: hidden;
